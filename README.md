@@ -1,4 +1,4 @@
-# Fullstack Twitch Clone
+# CalHacks
 
 <img src="Logo.jpeg" alt="Logo" width="400" height="400"/>
 
