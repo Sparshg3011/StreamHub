@@ -38,9 +38,12 @@ export const Chat = ({
   const matches = useMediaQuery("(max-width: 1024px)");
   const { variant, onExpand } = useChatSidebar((state) => state);
   const connectionState = useConnectionState();
-  const participant = useRemoteParticipant(hostIdentity);
+  const hostAsViewer = `Host-${hostIdentity}`;
+  const primaryHostParticipant = useRemoteParticipant(hostIdentity);
+  const fallbackHostParticipant = useRemoteParticipant(hostAsViewer);
+  const participant = primaryHostParticipant ?? fallbackHostParticipant;
 
-  const isOnline = participant && connectionState === ConnectionState.Connected;
+  const isOnline = !!participant && connectionState === ConnectionState.Connected;
 
   const isHidden = !isChatEnabled || !isOnline;
 

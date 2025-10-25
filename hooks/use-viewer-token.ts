@@ -18,7 +18,7 @@ export const useViewerToken = (hostIdentity: string) => {
           name?: string;
         };
         const name = decodedToken?.name;
-        const identity = decodedToken?.jti;
+        const identity = decodedToken?.sub;
 
         if (identity) {
           setIdentity(identity);
